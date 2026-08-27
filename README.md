@@ -15,14 +15,25 @@ The notebook generates a practical concept summary that includes:
 - marketing suggestions
 - early website and brand direction
 
-## Recent updates
+## Recent changes (most recent first)
 
-The project has recently evolved from a simple notebook example into a more interactive AI assistant experience:
+1. Streaming responses (text)
+   - Before: The notebook requested a single JSON object response and waited for the full output.
+   - Changed: Replaced the blocking JSON-only call with a streaming chat completion, printing/updating partial markdown as chunks arrive.
+   - How it works: The app now consumes streamed chunks from the chat completion API and updates the UI progressively.
+   - Advantages: Faster perceived response time, users see content as it is generated, and partial results can be reviewed earlier.
 
-- Moved from a blocking JSON-only response to a streaming markdown output.
-- Added a Gradio chat-style interface so the user can answer questions conversationally.
-- The app now asks for the business details in a chat flow and returns the business plan directly inside the interface.
-- The bot is designed for local business concept generation, launch planning, and early brand direction.
+2. Gradio chat interface
+   - Before: The notebook printed results to the Jupyter output area after the call completed.
+   - Changed: Added a Gradio Blocks chat-style UI so users can enter business fields conversationally and receive streamed answers in a chat box.
+   - How it works: The Gradio app accepts inputs, streams the assistant's text output back into a `Chatbot` component, and returns the full plan.
+   - Advantages: More interactive, easier for non-technical users, and supports conversational follow-ups.
+
+3. Logo generation (Images)
+   - Before: The notebook produced only textual plans and did not generate any images.
+   - Changed: Added a logo-generation step that calls the OpenAI Images API to create a simple logo based on the business name, type, and brand idea, and displays it alongside the chat output.
+   - How it works: After streaming the text plan, the app requests a logo image (base64) from the Images API, decodes it, and shows it in an `Image` box next to the chat window.
+   - Advantages: Provides a quick visual identity sketch, useful for brainstorming brand concepts and sharing with designers.
 
 ## Files
 
