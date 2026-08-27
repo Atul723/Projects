@@ -15,6 +15,12 @@ The notebook generates a practical concept summary that includes:
 - marketing suggestions
 - early website and brand direction
 
+## Preview
+
+![App preview](assets/preview.PNG)
+
+*If the image does not show, save the screenshot as* `assets/preview.PNG` *relative to the project root.*
+
 ## Recent changes (most recent first)
 
 1. Streaming responses (text)
@@ -81,13 +87,13 @@ demo.launch()
 
 The app asks questions in this style:
 
-- Business name: FitNest
-- Business type: gym
-- Location: Gurgaon, Haryana
-- Target audience: beginners and active adults
-- Brand idea: community-first coaching with accountability
+- Business name: The Curry Stories
+- Business type: Restaurant
+- Location: Noida, Uttar Pradesh
+- Target audience: Family and Friends
+- Brand idea: To serve the best veg and non-veg Indian curries from the northern part of India along with other famous food items
 
-The response is generated directly in the chat interface as a streamed output.
+The response is generated directly in the chat interface as a streamed output and a generated logo image is shown to the right (see preview above).
 
 ## Notes
 
