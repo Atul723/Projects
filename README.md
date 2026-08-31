@@ -55,7 +55,7 @@ Before running the notebook, make sure you have:
 - an OpenAI API key in the `.env` file as:
 
 ```env
-OPENAI_API_KEY=your_key_heres
+OPENAI_API_KEY=api_key
 ```
 
 You may also need these Python packages installed:
@@ -72,7 +72,14 @@ pip install python-dotenv openai ipython gradio
 
 ```python
 demo = launch_gradio_app()
-demo.launch()
+# If GRADIO auth is set in .env, the app will require the username/password.
+import os
+from dotenv import load_dotenv
+load_dotenv()
+auth_user = os.getenv("GRADIO_AUTH_USER")
+auth_pass = os.getenv("GRADIO_AUTH_PASS")
+
+demo.launch(share=True, auth=(auth_user, auth_pass) if auth_user and auth_pass else None)
 ```
 
 4. Enter the details in the chat interface:
@@ -82,6 +89,25 @@ demo.launch()
    - target audience
    - brand idea
 5. The assistant will generate a local business launch plan in the chat output.
+
+## Authentication
+
+The Gradio app supports optional basic auth to restrict access. Set the following values in the `.env` file in the `Projects/` folder:
+
+```env
+GRADIO_AUTH_USER=username
+GRADIO_AUTH_PASS=password
+```
+
+If both values are present when the notebook loads, the Gradio app will require the username/password to open. The notebook also supports launching without auth if these variables are not set.
+
+Example credentials screenshots:
+
+![Correct credentials example](assets/creden.PNG)
+
+![Incorrect credentials example](assets/incorrect_cred.PNG)
+
+The first image shows a successful login flow when valid `GRADIO_AUTH_USER`/`GRADIO_AUTH_PASS` values are provided. The second image shows the app's response when incorrect credentials are entered.
 
 ## Example chat flow
 
