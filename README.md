@@ -19,6 +19,8 @@ The notebook generates a practical concept summary that includes:
 
 ![App preview](assets/preview.PNG)
 
+![AI Local Business Concept Planner](assets/AI_Local_Business_Concept_Planner.png)
+
 *If the image does not show, save the screenshot as* `assets/preview.PNG` *relative to the project root.*
 
 ## Recent changes (most recent first)
